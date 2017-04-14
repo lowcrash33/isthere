@@ -22,8 +22,7 @@ public class ProductController {
     						@RequestParam("code") String code,
     						@RequestParam("type") int type) throws Exception{
     	
-    	
-    	
+    	    	
     	Product product = new Product();
     	product.setShopid(shopid);
     	product.setPrice(price);

@@ -1,4 +1,4 @@
-package isthere.spring.dao;
+package isthere.spring.mapper;
 
 import isthere.spring.vo.Product;
 

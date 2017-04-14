@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="isthere.spring.mapper.ShopMapper">
+
+	<resultMap type="Shop" id="ShopResultMap">
+		<result property="shop_id" column="shop_id"/>
+		<result property="shop_name" column="shop_name" />
+		<result property="shop_lat" column="shop_lat"/>
+		<result property="shop_lng" column="shop_lng"/>
+		<result property="shop_type" column="shop_type"/>
+		<result property="shop_time" column="shop_time"/>
+		<result property="shop_info" column="shop_info"/>
+		<result property="shop_vendor" column="shop_vendor"/>
+	</resultMap>
+    <insert id="insertShop" parameterType="isthere.spring.vo.Shop">
+   		INSERT INTO shop (shop_name, shop_lat, shop_lng, shop_type, shop_info, shop_vendor) 
+   		VALUES (#{shop_name}, #{shop_lat}, #{shop_lng}, #{shop_type}, #{shop_info}, #{shop_vendor})
+    </insert>
+</mapper>
