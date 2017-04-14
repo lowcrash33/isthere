@@ -1,7 +1,11 @@
 package isthere.spring.service;
 
+import java.util.ArrayList;
+
 import isthere.spring.vo.Shop;
 
 public interface ShopService {
-	public void addShop(Shop shop) throws Exception;
+	public String addShop(Shop shop) throws Exception;
+	public ArrayList<Shop> scanShop(int dist) throws Exception;
+
 }

@@ -16,4 +16,10 @@
    		INSERT INTO shop (shop_name, shop_lat, shop_lng, shop_type, shop_info, shop_vendor) 
    		VALUES (#{shop_name}, #{shop_lat}, #{shop_lng}, #{shop_type}, #{shop_info}, #{shop_vendor})
     </insert>
+    
+    <select id="selectShop" resultMap="ShopResultMap">
+       <![CDATA[ SELECT *, ( 6371 * acos( cos( radians(37.491) ) * cos( radians( shop_lat ) ) * cos( radians( shop_lng ) - 
+        radians(127.020) ) + sin( radians(37.491) ) * sin( radians( shop_lat ) ) ) ) 
+        AS distance FROM shop HAVING distance < #{dist} ORDER BY distance 	]]>
+    </select>
 </mapper>

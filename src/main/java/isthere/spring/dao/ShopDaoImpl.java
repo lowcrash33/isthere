@@ -1,5 +1,7 @@
 package isthere.spring.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,9 +16,16 @@ public class ShopDaoImpl implements ShopDao {
      
    
     @Override
-    public void addShop(Shop shop){
+    public String addShop(Shop shop){
     	 ShopMapper shopMapper = sqlsession.getMapper(ShopMapper.class);
     	 shopMapper.insertShop(shop);
+    	 return "OK"; 
+    }
+    @Override
+    public ArrayList<Shop> scanShop(int dist){
+    	 ShopMapper shopMapper = sqlsession.getMapper(ShopMapper.class);
+    	 return shopMapper.selectShop(dist);
+    	 
     }
      
 }

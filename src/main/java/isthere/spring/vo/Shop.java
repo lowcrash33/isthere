@@ -11,6 +11,19 @@ public class Shop {
 	private Date shop_time;
 	private String shop_info;
 	private String shop_vendor;
+	
+	public Shop(){}
+	
+	public Shop(String shop_name, double shop_lat, double shop_lng, String shop_type, String shop_info,
+			String shop_vendor) {
+		super();
+		this.shop_name = shop_name;
+		this.shop_lat = shop_lat;
+		this.shop_lng = shop_lng;
+		this.shop_type = shop_type;
+		this.shop_info = shop_info;
+		this.shop_vendor = shop_vendor;
+	}
 	public int getShop_id() {
 		return shop_id;
 	}

@@ -1,38 +1,27 @@
 package isthere.spring.controller;
  
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import isthere.spring.service.ProductService;
-import isthere.spring.vo.Product;
+import isthere.spring.service.ShopService;
+import isthere.spring.vo.Shop;
  
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/test")
 public class ProductController {
     @Autowired
-    private ProductService productservice;
-     
-    @RequestMapping(value="/add", method = RequestMethod.GET)
-    public String usercheck(@RequestParam("shopid") int shopid,
-    						@RequestParam("price") int price,
-    						@RequestParam("name") String name,
-    						@RequestParam("code") String code,
-    						@RequestParam("type") int type) throws Exception{
-    	
-    	    	
-    	Product product = new Product();
-    	product.setShopid(shopid);
-    	product.setPrice(price);
-    	product.setName(name);
-    	product.setCode(code);
-    	product.setType(type);
-    	
-        productservice.addProduct(product);
-         
-        return "main/index";
+	private ShopService shopservice;
+	
+    @RequestMapping(value="/scan", method = RequestMethod.GET)
+    public @ResponseBody ArrayList<Shop> test(@RequestParam("dist") int dist) throws Exception{
+    
+    	System.out.println("Request param : "+ dist);
+        return shopservice.scanShop(dist); 
     }
 }
 
