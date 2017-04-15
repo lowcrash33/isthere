@@ -19,8 +19,8 @@ public class ShopServiceImpl implements ShopService{
     	return shopdao.addShop(shop);   
     }
     @Override
-    public ArrayList<Shop> scanShop(float dist) throws Exception{
-    	return shopdao.scanShop(dist);   
+    public ArrayList<Shop> scanShop(String dist, String lat, String lng) throws Exception{
+    	return shopdao.scanShop(dist, lat, lng);   
     }
 }
 

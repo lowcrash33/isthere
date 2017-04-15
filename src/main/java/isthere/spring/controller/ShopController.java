@@ -29,14 +29,14 @@ public class ShopController {
     	return "OK";
     }
     
-    @RequestMapping(value="/scan", method = RequestMethod.GET)
-    public @ResponseBody ArrayList<Shop> scanShop(@RequestParam("dist") float dist,
-    											@RequestParam("lat") Double lat,
-    											@RequestParam("lng") Double lng) throws Exception{
-    	
+    @RequestMapping("/scan")
+    public @ResponseBody ArrayList<Shop> scanShop(HttpServletRequest request) throws Exception{
+    	String lat = request.getParameter("lat");
+    	String lng = request.getParameter("lng");
+    	String dist = request.getParameter("dist");
     	System.out.println("Request param : "+ dist+", "+lat+", "+lng);
     	
-        return shopservice.scanShop(dist); 
+        return shopservice.scanShop(dist, lat, lng); 
     }
     
     

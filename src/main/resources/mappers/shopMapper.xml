@@ -18,8 +18,8 @@
     </insert>
     
     <select id="selectShop" resultMap="ShopResultMap">
-       <![CDATA[ SELECT *, ( 6371 * acos( cos( radians(37.491) ) * cos( radians( shop_lat ) ) * cos( radians( shop_lng ) - 
-        radians(127.020) ) + sin( radians(37.491) ) * sin( radians( shop_lat ) ) ) ) 
-        AS distance FROM shop HAVING distance < #{dist} ORDER BY distance 	]]>
+       <![CDATA[ SELECT *, ( 6371 * acos( cos( radians(${param2}) ) * cos( radians( shop_lat ) ) * cos( radians( shop_lng ) - 
+        radians(${param3}) ) + sin( radians(${param2}) ) * sin( radians( shop_lat ) ) ) ) 
+        AS distance FROM shop HAVING distance < ${param1} ORDER BY distance 	]]>
     </select>
 </mapper>

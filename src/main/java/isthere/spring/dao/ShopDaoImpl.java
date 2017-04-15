@@ -22,9 +22,9 @@ public class ShopDaoImpl implements ShopDao {
     	 return "OK"; 
     }
     @Override
-    public ArrayList<Shop> scanShop(float dist){
+    public ArrayList<Shop> scanShop(String dist, String lat, String lng){
     	 ShopMapper shopMapper = sqlsession.getMapper(ShopMapper.class);
-    	 return shopMapper.selectShop(dist);
+    	 return shopMapper.selectShop(dist, lat, lng);
     	 
     }
      
