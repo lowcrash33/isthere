@@ -18,7 +18,7 @@ public class ProductController {
 	private ShopService shopservice;
 	
     @RequestMapping(value="/scan", method = RequestMethod.GET)
-    public @ResponseBody ArrayList<Shop> test(@RequestParam("dist") int dist) throws Exception{
+    public @ResponseBody ArrayList<Shop> test(@RequestParam("dist") float dist) throws Exception{
     
     	System.out.println("Request param : "+ dist);
         return shopservice.scanShop(dist); 

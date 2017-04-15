@@ -7,5 +7,5 @@ import isthere.spring.vo.Shop;
 public interface ShopMapper {
     
     void insertShop(Shop shop);
-    ArrayList<Shop> selectShop(int dist);
+    ArrayList<Shop> selectShop(float dist);
 }

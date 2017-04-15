@@ -6,6 +6,6 @@ import isthere.spring.vo.Shop;
 
 public interface ShopService {
 	public String addShop(Shop shop) throws Exception;
-	public ArrayList<Shop> scanShop(int dist) throws Exception;
+	public ArrayList<Shop> scanShop(float dist) throws Exception;
 
 }

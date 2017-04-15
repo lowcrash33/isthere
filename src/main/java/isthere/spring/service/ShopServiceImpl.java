@@ -19,7 +19,7 @@ public class ShopServiceImpl implements ShopService{
     	return shopdao.addShop(shop);   
     }
     @Override
-    public ArrayList<Shop> scanShop(int dist) throws Exception{
+    public ArrayList<Shop> scanShop(float dist) throws Exception{
     	return shopdao.scanShop(dist);   
     }
 }
