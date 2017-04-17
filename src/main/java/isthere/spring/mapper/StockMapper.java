@@ -4,7 +4,7 @@ import isthere.spring.vo.Stock;
 
 public interface StockMapper {
     
-    String updateStock(Stock stock);
+    int updateStock(Stock stock);
 
 	String selectStock(Stock stock);
 

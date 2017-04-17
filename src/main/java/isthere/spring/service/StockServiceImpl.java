@@ -13,8 +13,17 @@ public class StockServiceImpl implements StockService{
     private StockDao stockdao;
      
     @Override
-    public String updateStock(Stock stock) throws Exception{
+    public int updateStock(Stock stock) throws Exception{
     	return stockdao.updateStock(stock);
+    }
+    
+    @Override
+    public String selectStock(Stock stock) throws Exception{
+    	return stockdao.selectStock(stock);
+    }
+    @Override
+    public String insertStock(Stock stock) throws Exception{
+    	return stockdao.insertStock(stock);
     }
 }
 

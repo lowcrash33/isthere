@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="isthere.spring.mapper.StockMapper">
+
+	<resultMap type="Stock" id="StockResultMap">
+		<result property="item_code" column="item_code" />
+		<result property="shop_id" column="shop_id"/>
+		<result property="stock_time" column="stock_time"/>
+		<result property="stock_info" column="stock_info"/>
+		<result property="stock" column="stock_stock"/>
+		
+	</resultMap>
+    <insert id="insertStock" parameterType="isthere.spring.vo.Stock" >
+   		INSERT INTO stock (item_code, shop_id, stock_info, stock_stock) VALUES (#{item_code}, #{shop_id}, #{stock_info}, #{stock})
+    </insert>
+    <select id="selectStock" parameterType="isthere.spring.vo.Stock" resultType="java.lang.String">
+   		SELECT stock_stock FROM stock WHERE shop_id = #{shop_id} AND item_code = #{item_code}
+    </select>
+     <update id="updateStock" parameterType="isthere.spring.vo.Stock">
+   		UPDATE stock SET stock_info = #{stock_info}, stock_stock = #{stock} WHERE shop_id = #{shop_id} AND item_code = #{item_code}
+    </update>
+</mapper>

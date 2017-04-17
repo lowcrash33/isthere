@@ -14,7 +14,7 @@ public class StockDaoImpl implements StockDao {
      
    
     @Override
-    public String updateStock(Stock stock){
+    public int updateStock(Stock stock){
          StockMapper stockMapper = sqlsession.getMapper(StockMapper.class);
          String stockStr = selectStock(stock);
          
@@ -22,9 +22,15 @@ public class StockDaoImpl implements StockDao {
          if(stockStr != null){
         	int stockCnt = Integer.parseInt(stockStr);
             stock.setStock(stock.getStock() + stockCnt);
-            return stockMapper.updateStock(stock); 
+            stockMapper.updateStock(stock); 
+            System.out.println("StockDaoImpl/updateStock    "  +"Request param : "+ 
+            stock.getStock()+", "+ stock.getShop_id() +", "+stock.getStock_info() +", "+ stock.getItem_code());
+            return 1;
          }else{
-            return stockMapper.insertStock(stock); 
+        	stockMapper.insertStock(stock);
+        	System.out.println("StockDaoImpl/insertStock    "  +"Request param : "+ 
+                    stock.getStock()+", "+ stock.getShop_id() +", "+stock.getStock_info() +", "+ stock.getItem_code());
+        	return 0;
          }
     }
     @Override
