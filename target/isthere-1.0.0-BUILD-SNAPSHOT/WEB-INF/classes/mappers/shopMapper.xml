@@ -12,6 +12,18 @@
 		<result property="shop_info" column="shop_info"/>
 		<result property="shop_vendor" column="shop_vendor"/>
 	</resultMap>
+	<resultMap type="StockShop" id="StockShopResultMap">
+		<result property="item_code" column="item_code"/>
+		<result property="shop_id" column="shop_id"/>
+		<result property="stock_stock" column="stock_stock"/>
+		<result property="shop_name" column="shop_name" />
+		<result property="shop_lat" column="shop_lat"/>
+		<result property="shop_lng" column="shop_lng"/>
+		<result property="shop_type" column="shop_type"/>
+		<result property="shop_info" column="shop_info"/>
+		<result property="shop_vendor" column="shop_vendor"/>
+		<result property="distance" column="distance"/>
+	</resultMap>
     <insert id="insertShop" parameterType="isthere.spring.vo.Shop">
    		INSERT INTO shop (shop_name, shop_lat, shop_lng, shop_type, shop_info, shop_vendor) 
    		VALUES (#{shop_name}, #{shop_lat}, #{shop_lng}, #{shop_type}, #{shop_info}, #{shop_vendor})
@@ -21,5 +33,14 @@
        <![CDATA[ SELECT *, ( 6371 * acos( cos( radians(${param2}) ) * cos( radians( shop_lat ) ) * cos( radians( shop_lng ) - 
         radians(${param3}) ) + sin( radians(${param2}) ) * sin( radians( shop_lat ) ) ) ) 
         AS distance FROM shop HAVING distance < ${param1} ORDER BY distance 	]]>
+    </select>
+    
+    <select id="selectStockShop" parameterType="isthere.spring.vo.StockShop" resultMap="StockShopResultMap" >
+       <![CDATA[ SELECT * FROM stock join 
+       (SELECT *, ( 6371 * acos( cos( radians(${shop_lat}) ) * cos( radians( shop_lat ) ) * cos( radians( shop_lng ) - 
+        radians(${shop_lng}) ) + sin( radians(${shop_lat}) ) * sin( radians( shop_lat ) ) ) ) 
+        AS distance FROM shop HAVING distance < ${distance}) nearshop 
+        ON (stock.shop_id=nearshop.shop_id) WHERE stock.item_code IN (select item_code from item where item_name='${item_code}') 
+        AND stock.stock_stock > 0 ORDER BY distance 	]]>
     </select>
 </mapper>
