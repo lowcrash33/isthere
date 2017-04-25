@@ -10,11 +10,17 @@
 		<result property="item_time" column="item_time"/>
 		<result property="item_info" column="item_info"/>
 		<result property="item_brand" column="item_brand"/>
-		<result property="item_image" column="item_image"/>
 		<result property="stock_stock" column="stock_stock"/>
+		<result property="stock_sold" column="stock_sold"/>
 	</resultMap>
     
     <select id="selectItembyShop" resultMap="ItemResultMap">
-	     SELECT * FROM item join stock on item.item_code = stock.item_code WHERE shop_id = #{shop_id}  
+	     SELECT * FROM item join stock on item.item_code = stock.item_code WHERE shop_id = #{shop_id} ORDER BY item.item_name
+    </select>
+    <select id="itemReserve" resultMap="ItemResultMap" >
+	     SELECT * FROM item join stock on item.item_code = stock.item_code WHERE item_name = '${param2}' AND shop_id = ${param1}
+    </select>
+    <select id="itemSoldTop" resultMap="ItemResultMap" parameterType="int">
+	     SELECT * FROM item ORDER BY item_sold DESC LIMIT #{item_limit};
     </select>
 </mapper>

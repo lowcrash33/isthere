@@ -2,6 +2,8 @@ package isthere.spring.controller;
  
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +15,14 @@ import isthere.spring.vo.Stock;
 @Controller
 @RequestMapping("/stock")
 public class StockController {
+	private static final Logger logger = LoggerFactory.getLogger(StockController.class);
     @Autowired
 	private StockService stockservice;
 	
     @RequestMapping("/update")
     public @ResponseBody String scanShop(HttpServletRequest request) throws Exception{
     	Stock stock = setStockVO(request);
-    	System.out.println("Action : /stock/update    "  +"Request param : "+ 
+    	logger.info("Action : /stock/update    "  +"Request param : "+ 
     	stock.getStock()+", "+ stock.getShop_id() +", "+stock.getStock_info() +", "+ stock.getItem_code());
     	String result = "Result : "+ stockservice.updateStock(stock);
         return result; 

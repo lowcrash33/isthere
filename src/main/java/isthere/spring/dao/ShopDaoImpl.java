@@ -22,10 +22,16 @@ public class ShopDaoImpl implements ShopDao {
     	 shopMapper.insertShop(shop);
     	 return "OK"; 
     }
+    
     @Override
-    public ArrayList<Shop> scanShop(String dist, String lat, String lng){
+    public void deleteShop(String shop_id){
+    	 sqlsession.delete("deleteShop", shop_id);
+    }
+    
+    @Override
+    public ArrayList<Shop> scanShop(Shop shop){
     	 ShopMapper shopMapper = sqlsession.getMapper(ShopMapper.class);
-    	 return shopMapper.selectShop(dist, lat, lng);
+    	 return shopMapper.selectShop(shop);
     	 
     }
     

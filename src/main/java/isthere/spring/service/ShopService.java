@@ -7,7 +7,8 @@ import isthere.spring.vo.StockShop;
 
 public interface ShopService {
 	public String addShop(Shop shop) throws Exception;
-	public ArrayList<Shop> scanShop(String dist, String lat, String lng) throws Exception;
+	public void deleteShop(String shop_id);
+	public ArrayList<Shop> scanShop(Shop shop) throws Exception;
 	public ArrayList<StockShop> selectStockShop(StockShop stockShop);
 
 }

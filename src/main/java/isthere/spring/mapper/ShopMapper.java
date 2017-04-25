@@ -8,6 +8,7 @@ import isthere.spring.vo.StockShop;
 public interface ShopMapper {
     
     void insertShop(Shop shop);
-    ArrayList<Shop> selectShop(String dist, String lat, String lng);
+    void deleteShop(String shop_id);
+    ArrayList<Shop> selectShop(Shop shop);
     ArrayList<StockShop> selectStockShop(StockShop stockShop);
 }

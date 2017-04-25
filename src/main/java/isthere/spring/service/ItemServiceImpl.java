@@ -20,6 +20,14 @@ public class ItemServiceImpl implements ItemService{
     public ArrayList<Item> scanItembyShop(String shop_id) throws Exception{
     	return itemdao.scanItembyShop(shop_id);   
     }
+    @Override
+    public ArrayList<Item> itemSoldTop(String item_limit){
+    	return itemdao.itemSoldTop(item_limit);   
+    }
+    @Override
+    public ArrayList<Item> itemResv(int shop_id, String item_name){
+    	return itemdao.itemResv(shop_id, item_name);   
+    }
     
 }
 

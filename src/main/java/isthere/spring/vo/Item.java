@@ -10,8 +10,8 @@ public class Item {
 	private Date item_time;
 	private String item_info;
 	private String item_brand;
-	private String item_image;
 	private int stock_stock;
+	private int stock_sold;
 	
 	public String getItem_code() {
 		return item_code;
@@ -56,17 +56,17 @@ public class Item {
 	public void setItem_brand(String item_brand) {
 		this.item_brand = item_brand;
 	}
-	public String getItem_image() {
-		return item_image;
-	}
-	public void setItem_image(String item_image) {
-		this.item_image = item_image;
-	}
 	public int getStock_stock() {
 		return stock_stock;
 	}
 	public void setStock_stock(int stock_stock) {
 		this.stock_stock = stock_stock;
+	}
+	public int getStock_sold() {
+		return stock_sold;
+	}
+	public void setStock_sold(int stock_sold) {
+		this.stock_sold = stock_sold;
 	}
 	
 	

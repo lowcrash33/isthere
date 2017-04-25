@@ -20,8 +20,12 @@ public class ShopServiceImpl implements ShopService{
     	return shopdao.addShop(shop);   
     }
     @Override
-    public ArrayList<Shop> scanShop(String dist, String lat, String lng) throws Exception{
-    	return shopdao.scanShop(dist, lat, lng);   
+    public void deleteShop(String shop_id){
+    	shopdao.deleteShop(shop_id);   
+    }
+    @Override
+    public ArrayList<Shop> scanShop(Shop shop) throws Exception{
+    	return shopdao.scanShop(shop);   
     }
     @Override
     public ArrayList<StockShop> selectStockShop(StockShop stockShop){

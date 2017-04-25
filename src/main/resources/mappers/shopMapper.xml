@@ -11,6 +11,8 @@
 		<result property="shop_time" column="shop_time"/>
 		<result property="shop_info" column="shop_info"/>
 		<result property="shop_vendor" column="shop_vendor"/>
+		<result property="shop_soldtop" column="shop_soldtop"/>
+		<result property="distance" column="distance"/>
 	</resultMap>
 	<resultMap type="StockShop" id="StockShopResultMap">
 		<result property="item_code" column="item_code"/>
@@ -29,10 +31,14 @@
    		VALUES (#{shop_name}, #{shop_lat}, #{shop_lng}, #{shop_type}, #{shop_info}, #{shop_vendor})
     </insert>
     
-    <select id="selectShop" resultMap="ShopResultMap">
-       <![CDATA[ SELECT *, ( 6371 * acos( cos( radians(${param2}) ) * cos( radians( shop_lat ) ) * cos( radians( shop_lng ) - 
-        radians(${param3}) ) + sin( radians(${param2}) ) * sin( radians( shop_lat ) ) ) ) 
-        AS distance FROM shop HAVING distance < ${param1} ORDER BY distance 	]]>
+    <delete id="deleteShop" parameterType="java.lang.String">
+    	delete from shop where shop_id=#{shop_id}
+    </delete>
+    
+    <select id="selectShop" resultMap="ShopResultMap" parameterType="isthere.spring.vo.Shop">
+       <![CDATA[ SELECT *, ( 6371 * acos( cos( radians(${shop_lat}) ) * cos( radians( shop_lat ) ) * cos( radians( shop_lng ) - 
+        radians(${shop_lng}) ) + sin( radians(${shop_lat}) ) * sin( radians( shop_lat ) ) ) ) 
+        AS distance FROM shop HAVING distance < ${distance} ORDER BY distance 	]]>
     </select>
     
     <select id="selectStockShop" parameterType="isthere.spring.vo.StockShop" resultMap="StockShopResultMap" >
